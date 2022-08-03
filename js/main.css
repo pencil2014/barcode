@@ -56,6 +56,7 @@ textarea::placeholder{
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow:auto;
 }
 .imgs-box{
   background-color: #f8f8f8;

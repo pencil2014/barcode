@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sowoll条形码工具</title>
+  <link rel="stylesheet" type="text/css" href="./js/main.css">
+  <script src="./js/barcode.js"></script>
+  <script src="./js/jszip.min.js"></script>
+  <script src="./js/FileSaver.min.js"></script>
+  <script src="./js/vue.js"></script>
+  <script src="./js/index.js"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="sub-title">批量在线生成条形码工具</div>
+    <div class="cnt">
+      <div class="box">
+        <div class="input-box">
+          <div class="title">输入条形码数据<span v-show="codesArr.length">({{codesArr.length}}条)</span></div>
+          <textarea rows="" cols="" v-model="codes" placeholder="请将条形码数据贴到这里，一条一行，不要有空格或无关字符，一次最多200条数据"></textarea>
+        </div>
+        <div class="preview-box">
+          <div class="title">条形码预览</div>
+          <div class="imgs-box">
+            <p class="tips" v-show="showTips">你输入的某些数据不符合CODE128编码规则，请更正！</p>
+            <img v-for="(item,index) in codesArr" :id="'barcode'+index" :key="index">
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <button type="button" class="submit" @click="getBase64Image">导出条形码</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

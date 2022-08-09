@@ -11,13 +11,29 @@ body{
   margin: 1.5rem;
   text-align: center;
 }
-.cnt{
+.cnt,.menu-box{
   width: 1140px;
   background-color: #fff;
   margin: auto;
 }
-.cnt{
+.cnt {
   padding: 1.25rem;
+}
+.menu-box{
+  padding: 0 1.25rem;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.menu-box a{
+  padding: 10px;
+  color: #428bda;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.menu-box a.active{
+  background-color: #428bda;
+  color: #fff;
 }
 .cnt .title{
   text-align: center;
@@ -92,4 +108,50 @@ button:hover{
 .tips{
   margin-top: 3rem;
   color:#dc3545;
+}
+.order-box{
+  margin-bottom: 10px;
+  display: flex;
+  line-height: 25px;
+}
+.order-input{
+ flex: 1;
+ border: 1px solid #ddd;
+ border-radius: 4px;
+ 
+}
+.order-input:focus{
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+.img-item-box{
+  height: 210px;
+  margin: 5px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.img-item-box .item {
+  height: 200px;
+  background-color: #fff;
+  display: inline-block;
+  padding: 5px 10px;
+  
+}
+.img-item-box .outer-box{
+  box-shadow: #aaa 1px 1px 3px;
+}
+.img-item-box .item img{
+  box-shadow: none;
+}
+.img-item-box .orderNo,.img-item-box .text {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 30px;
+}
+.img-item-box .orderNo{
+  font-size: 20px;
 }

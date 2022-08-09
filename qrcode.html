@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sowoll二维码工具</title>
+  <link rel="stylesheet" type="text/css" href="./js/main.css">
+  <script src="./js/qrcode.js"></script>
+  <script src="./js/jszip.min.js"></script>
+  <script src="./js/FileSaver.min.js"></script>
+  <script src="./js/html2canvas.js"></script>
+  <script src="./js/vue.js"></script>
+  <script src="./js/qrcode-index.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="menu-box">
+      <a href="./index.html"><img src="./images/bar.png" />条形码工具</a>
+      <a href="./qrcode.html" class="active"><img src="./images/qr.png" />二维码工具</a>
+    </div>
+    <div class="sub-title">批量在线生成二维码工具</div>
+    <div class="cnt">
+      <div class="order-box">
+        进仓单号：<input type="text" v-model="orderNo" class="order-input" placeholder="请输入进仓单号">
+      </div>
+      <div class="box">
+        <div class="input-box">
+          <div class="title">输入二维码数据<span v-show="codesArr.length">({{codesArr.length}}条)</span></div>
+          <textarea rows="" cols="" v-model="codes" placeholder="请将二维码数据贴到这里，一条一行，不要有空格或无关字符，一次最多200条数据"></textarea>
+        </div>
+        <div class="preview-box">
+          <div class="title">二维码预览</div>
+          <div class="imgs-box">
+            <p class="tips" v-show="showTips">你输入的某些数据不符合CODE128编码规则，请更正！</p>
+            <div class="img-item-box" v-for="(item,index) in codesArr" :key="index">
+              <div class="outer-box">
+                <div class="item" :id="'qrcode'+index">
+                  <div class="orderNo">{{orderNo}}</div>
+                  <div :id="'barcode'+index"></div>
+                  <div class="text">{{item}}</div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <button type="button" class="submit" @click="getBase64Image">导出二维码</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

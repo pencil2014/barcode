@@ -50,11 +50,11 @@ window.onload = function () {
       },
       zipclick() {
         var zip = new JSZip()
-        var img = zip.folder('条形码')
+        // var img = zip.folder('条形码')
         let base64Images = this.base64Images
         let length = base64Images.length
         for (let i = 0; i < length; i++) {
-          img.file(this.codesArr[i] + '.png', base64Images[i], { base64: true })
+          zip.file(this.codesArr[i] + '.png', base64Images[i], { base64: true })
         }
         zip.generateAsync({ type: 'blob' }).then(function (content) {
           saveAs(content, '条形码.zip')
